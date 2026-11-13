@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#070b19" />
+  <title>کیومرث | BrainByte AI Agent</title>
+  <link rel="stylesheet" href="/web/styles.css" />
+  <script src="/web/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="identity">
+        <div class="logo-icon"><span>✳</span></div>
+        <div><div class="logo-name">Brain<span>Byte</span> <small>LAB</small></div><div class="logo-subtitle">داشبورد هوشمند مدیریت پروژه</div></div>
+      </div>
+      <div class="topbar-right">
+        <div class="connection"><span class="connection-dot" id="connectionDot"></span><span id="connectionText">اتصال محلی فعال</span></div>
+        <span class="topbar-split"></span>
+        <div class="version">KEYOMARS <b>v0.3.2</b></div>
+      </div>
+    </header>
+
+    <div class="dashboard">
+      <main class="main-column">
+        <section class="hero panel">
+          <div class="hero-text">
+            <div class="overline"><span class="sparkle">✦</span> AI PROJECT ASSISTANT <span class="overline-rule"></span></div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span> یک دستیار واقعی، نه فقط یک چت‌بات</div>
+            <h1>سلام، من <span>کیومرث</span> هستم! <span class="wave">✌</span></h1>
+            <p>پروژه‌ات رو بررسی می‌کنم، تسک‌ها و وابستگی‌هاش رو می‌خونم و یک برنامه اجرایی بهت پیشنهاد می‌دم. <strong>اجازه تغییر فایل‌های پروژه رو ندارم.</strong></p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="runBtn"><span class="btn-icon">✦</span> شروع تحلیل پروژه <span class="left-arrow">←</span></button>
+              <span class="hero-hint" id="runHint">مدل زبانی روی سیستم خودت اجرا می‌شه</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="visual-orbit"></div><div class="visual-orbit orbit-inner"></div>
+            <div class="mascot-wrap"><img src="/web/assets/keyomars.png" alt="کیومرث؛ ربات دوست‌داشتنی BrainByte" /></div>
+            <div class="floating-chip chip-a">◈ AI AGENT</div><div class="floating-chip chip-b"><span>●</span> آماده اجرا</div>
+          </div>
+        </section>
+
+        <section class="metric-row">
+          <div class="metric panel"><span class="metric-icon purple">▤</span><div><span class="metric-title">تسک‌های پروژه</span><strong id="metricTotal">—</strong></div><small>از فایل واقعی</small></div>
+          <div class="metric panel"><span class="metric-icon blue">✓</span><div><span class="metric-title">تکمیل‌شده</span><strong id="metricDone">—</strong></div><small>بدون تغییر خودکار</small></div>
+          <div class="metric panel"><span class="metric-icon gold">⚑</span><div><span class="metric-title">اولویت بالا</span><strong id="metricHigh">—</strong></div><small>نیازمند بررسی</small></div>
+        </section>
+
+        <section class="workspace panel">
+          <div class="section-title-row">
+            <div class="section-title"><span class="square-icon">◎</span><div><h2>فعالیت زنده کیومرث</h2><p>اینجا دقیقاً می‌بینی Agent چه ابزارهایی رو اجرا می‌کنه</p></div></div>
+            <div class="state-pill idle" id="statePill"><span class="state-light"></span><span id="stateText">آماده شروع</span></div>
+          </div>
+          <div class="steps" id="steps">
+            <div class="empty-logs"><div class="empty-logs-icon">⌘</div><strong>هنوز تحلیلی شروع نشده</strong><p>روی «شروع تحلیل پروژه» کلیک کن تا فعالیت واقعی کیومرث اینجا نمایش داده بشه.</p></div>
+          </div>
+          <div class="activity-footer"><span>● تحلیل مدل و خواندن فایل‌ها به‌صورت محلی انجام می‌شوند</span><span id="elapsed">زمان اجرا: ۰۰:۰۰</span></div>
+        </section>
+
+        <section class="validation-card panel" id="validationCard">
+          <div class="section-title-row">
+            <div class="section-title"><span class="square-icon">⚖</span><div><h2>ارزیابی مستقل برنامه</h2><p>بررسی قطعی ظرفیت، ترتیب پیش‌نیازها و تسک‌های فراموش‌شده؛ مستقل از مدل زبانی</p></div></div>
+            <span class="validation-pill" id="validationPill">هنوز بررسی نشده</span>
+          </div>
+          <div class="validation-totals">
+            <div class="validation-total"><span>ظرفیت عادی پنج روز</span><strong id="baseCapacity">۱۰ ساعت</strong></div>
+            <div class="validation-total"><span>کار ضروری</span><strong id="requiredHours">۱۰٫۵ ساعت</strong></div>
+            <div class="validation-total"><span>اضافه‌کاری برنامه</span><strong id="extraHours">—</strong></div>
+          </div>
+          <div id="validationMessage" class="validation-message">کیومرث پس از بررسی فایل‌ها، برنامه پیشنهادی را به اعتبارسنج مستقل تحویل می‌دهد.</div>
+          <div id="dailyPlan" class="daily-plan"></div>
+          <div id="validationIssues" class="validation-issues"></div>
+        </section>
+
+        <section class="report panel" id="reportCard">
+          <div class="section-title-row">
+            <div class="section-title"><span class="square-icon">✧</span><div><h2>گزارش و پیشنهاد نهایی</h2><p>جمع‌بندی واقعی کیومرث بعد از بررسی پروژه</p></div></div>
+            <span class="report-status" id="reportStatus">منتظر تحلیل</span>
+          </div>
+          <div class="report-content is-empty" id="reportContent">وقتی بررسی پروژه تمام شود، اولویت‌ها، ریسک‌ها و برنامه پیشنهادی در همین بخش نمایش داده می‌شوند.</div>
+          <details id="planDetails" class="plan-details" hidden><summary>مشاهده متن کامل برنامه پیشنهادی</summary><pre id="fullPlan"></pre></details>
+          <div id="saveExtraWrap" class="extra-check" hidden>
+            <label><input type="checkbox" id="saveExtraCheck" /> با اضافه‌کاریِ مشخص‌شده در گزارش موافقم و ظرفیت پروژه را برای این برنامه افزایش می‌دهم.</label>
+          </div>
+          <div class="report-actions">
+            <button id="speakBtn" class="btn btn-secondary" disabled>◉ خواندن گزارش با صدا</button>
+            <button id="saveFinalBtn" class="btn btn-secondary" hidden>⇩ ذخیره پیشنهاد</button>
+            <a id="downloadBtn" class="btn btn-secondary" href="/api/download-plan" hidden>⇩ دریافت فایل plan.md</a>
+          </div>
+        </section>
+      </main>
+
+      <aside class="sidebar">
+        <section class="project-card panel">
+          <div class="aside-top"><h2>پروژه فعلی</h2><span class="demo-badge">DEMO</span></div>
+          <div class="project-logo">TF<span>.</span></div>
+          <h3>TaskFlow Mini</h3><p>یک نمونه واقعی و غیرمحرمانه از سیستم مدیریت وظایف؛ مناسب تست و ضبط ویدیوی یوتیوب.</p>
+          <div class="data-row"><span>مسیر داده</span><b>sample_project/</b></div>
+          <div class="data-row"><span>منبع تسک‌ها</span><b>tasks.json</b></div>
+          <div class="data-row"><span>مدل پیش‌فرض</span><b>qwen3:8b</b></div>
+        </section>
+
+        <section class="settings-card panel">
+          <div class="aside-top"><h2>تنظیمات اجرای Agent</h2><span class="aside-icon">⚙</span></div>
+          <label for="modelInput">مدل Ollama</label>
+          <input id="modelInput" value="qwen3:8b" dir="ltr" autocomplete="off" spellcheck="false" />
+          <label for="taskInput">مأموریت کیومرث</label>
+          <textarea id="taskInput" rows="4">پروژه TaskFlow Mini را بررسی کن، تسک‌ها و وابستگی‌ها را اولویت‌بندی کن و یک برنامه اجرایی پنج‌روزه به فارسی پیشنهاد بده. برای ذخیره برنامه از من تأیید بگیر.</textarea>
+          <label for="timeoutInput">حداکثر زمان پاسخ مدل</label>
+          <select id="timeoutInput"><option value="300">۵ دقیقه</option><option value="600" selected>۱۰ دقیقه — پیشنهادی</option><option value="900">۱۵ دقیقه</option><option value="1200">۲۰ دقیقه</option></select>
+          <p class="setting-footnote">تنها مدل‌هایی که قبلاً در Ollama نصب کردی قابل انتخاب هستن. اطلاعات پروژه به سرور بیرونی ارسال نمی‌شه.</p>
+        </section>
+
+        <section class="safety-card panel">
+          <div class="aside-top"><h2>قوانین کیومرث</h2><span class="shield">◈</span></div>
+          <div class="rule"><span class="rule-check">✓</span><span>خواندن فایل‌ها و تسک‌های مجاز</span></div>
+          <div class="rule"><span class="rule-check">✓</span><span>پیشنهاد برنامه پنج‌روزه</span></div>
+          <div class="rule"><span class="rule-check">✓</span><span>ذخیره فقط با تأیید انسان</span></div>
+          <div class="rule"><span class="rule-block">×</span><span>بدون حذف فایل، اجرای Shell یا تکمیل ساختگی تسک‌ها</span></div>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="bottom-bar"><span>© BrainByte • Keyomars AI Agent</span><span>ساخته‌شده با Python + Ollama — پردازش مدل محلی</span></footer>
+  </div>
+
+  <dialog id="approvalDialog" class="approval-modal">
+    <div class="modal-inner">
+      <div class="modal-glyph">🛡</div>
+      <h2>کیومرث اجازه ذخیره می‌خواد!</h2>
+      <p>پیشنهاد را قبل از تأیید مرور کن. فقط فایل <code>sample_project/output/plan.md</code> نوشته می‌شه؛ کدها و تسک‌ها تغییر نمی‌کنن.</p>
+      <pre id="approvalText"></pre>
+      <div id="approvalExtraWrap" class="extra-check" hidden>
+        <label><input type="checkbox" id="approvalExtraCheck" /> من اضافه‌کاری محاسبه‌شده را بررسی کردم و افزایش ظرفیت را صریحاً تأیید می‌کنم.</label>
+      </div>
+      <div class="modal-actions"><button class="btn btn-secondary" id="rejectBtn">رد درخواست</button><button class="btn btn-primary" id="approveBtn">✓ تأیید ذخیره برنامه</button></div>
+    </div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "working_days": 5,
+  "hours_per_day": 2.0,
+  "max_extra_hours_for_approval": 2.0,
+  "optional_task_ids": ["TF-07"],
+  "constraints_note": "Only one developer. Any additional work hours must be explicitly approved by the human project owner."
+}

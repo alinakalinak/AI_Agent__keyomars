@@ -1,0 +1,13 @@
+{
+  "project": "TaskFlow Mini",
+  "tasks": [
+    {"id": "TF-01", "title": "Design SQLite schema and indexes", "status": "todo", "priority": "high", "estimate_hours": 1.5, "depends_on": []},
+    {"id": "TF-02", "title": "Implement DB connection and task repository", "status": "todo", "priority": "high", "estimate_hours": 2, "depends_on": ["TF-01"]},
+    {"id": "TF-03", "title": "Implement create/list task API routes", "status": "in_progress", "priority": "high", "estimate_hours": 2.5, "depends_on": ["TF-02"]},
+    {"id": "TF-04", "title": "Implement status updates and validation", "status": "todo", "priority": "high", "estimate_hours": 1.5, "depends_on": ["TF-03"]},
+    {"id": "TF-05", "title": "Add endpoint smoke tests", "status": "todo", "priority": "high", "estimate_hours": 2, "depends_on": ["TF-03", "TF-04"]},
+    {"id": "TF-06", "title": "Write setup and run instructions", "status": "todo", "priority": "medium", "estimate_hours": 0.5, "depends_on": ["TF-03"]},
+    {"id": "TF-07", "title": "Add task labels and color themes", "status": "todo", "priority": "low", "estimate_hours": 3, "depends_on": ["TF-03"]},
+    {"id": "TF-08", "title": "Publish first demo after successful tests", "status": "todo", "priority": "high", "estimate_hours": 0.5, "depends_on": ["TF-05", "TF-06"]}
+  ]
+}
